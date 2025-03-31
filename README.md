@@ -161,7 +161,7 @@ You can do the same from a blueprint:
 
 ### Runtime Architecture
 
-![architecture diagram](Resources\diagram_architecture.png "Architecture Diagram")
+![architecture diagram](Resources/diagram_architecture.png "Architecture Diagram")
 
 <details>
   <summary><i>Expand for more implementation details</i></summary>
@@ -173,7 +173,7 @@ You can do the same from a blueprint:
 
 ### Editor Asset Setup
 
-![editor setup diagram](Resources\diagram_editor_setup.png "Setup Diagram")
+![editor setup diagram](Resources/diagram_editor_setup.png "Setup Diagram")
 
 ### Editor Utilities
 
@@ -276,3 +276,6 @@ Project Link: [https://github.com/eanticev/niagara-destruction-driver](https://g
 [step-3]: Resources/use-ndd-debugger.webp
 
 [usage-destruction-force-blueprint]: Resources/destruction_force_blueprint.png
+
+[architecture-diagram]: Resources/use-ndd-debugger.webp
+[editor-setup-diagram]: Resources/use-ndd-debugger.webp
