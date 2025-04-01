@@ -57,12 +57,12 @@ Under the hood the plugin uses a niagara system to simulate the physics of the f
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+This project was tested with UE 5.5.4.
 
 ### Prerequisites
 
 * Unreal Engine Project with C++ enabled.
+* Recommended Engine Version 5.4 or above
 
 ### Installation
 
