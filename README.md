@@ -258,15 +258,15 @@ Project Link: [https://github.com/eanticev/niagara-destruction-driver](https://g
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/eanticev/NiagaraDestructionDriver.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/eanticev/niagara-destruction-driver.svg?style=for-the-badge
 [contributors-url]: https://github.com/eanticev/niagara-destruction-driver/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/eanticev/NiagaraDestructionDriver.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/eanticev/niagara-destruction-driver.svg?style=for-the-badge
 [forks-url]: https://github.com/eanticev/niagara-destruction-driver/network/members
-[stars-shield]: https://img.shields.io/github/stars/eanticev/NiagaraDestructionDriver.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/eanticev/niagara-destruction-driver.svg?style=for-the-badge
 [stars-url]: https://github.com/eanticev/niagara-destruction-driver/stargazers
-[issues-shield]: https://img.shields.io/github/issues/eanticev/NiagaraDestructionDriver.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/eanticev/niagara-destruction-driver.svg?style=for-the-badge
 [issues-url]: https://github.com/eanticev/niagara-destruction-driver/issues
-[license-shield]: https://img.shields.io/github/license/eanticev/NiagaraDestructionDriver.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/eanticev/niagara-destruction-driver.svg?style=for-the-badge
 [license-url]: https://github.com/eanticev/niagara-destruction-driver/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/emilanticevic/
