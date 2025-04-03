@@ -132,7 +132,7 @@ You can do the same from a blueprint:
 * **Can I generate destructibles at runtime?** ... No. The underlying engine code required to process the geometry collection is editor only.
 * **Can you trace for collisions for the destroyed fragments?** ... No. The fragments are animated using vertex offsets (WPO) in a shader. This system is intended for cosmetic destruction like wall surfaces and small props. In a future update we could allow this system to drive smaller chunks of a CPU driven chaos geometry collection where the larger chunks with collision etc. still work.
 * **What's the point? Just use CHAOS destruction.** ... Niagara driven destructibles are more performant.
-* **Why did you make this?** ... We developed a houdini driven prototype of this tech when I was CTO at **Counterplay Games**. Two very talented tech artists built that version (will update with credits here when I get permission). This is a clean room re-implementation of that system with a number of optimization and that does not require houdini.
+* **Why did you make this?** ... We developed a houdini driven prototype of this tech when I was CTO at **Counterplay Games**. Two very talented tech and VFX artists Milan Malata and James Sharpe (see <a href="#acknowledgments">acknowledgments</a>) built that version. This is a clean room re-implementation of that system with a number of optimization and that does not require houdini.
 * **I'm getting weird floating pieces in my destructibles?** ... Make sure to use the TinyGEO tool in Chaos Fracture tools to merge tiny geometry to it's neighbors.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -250,7 +250,10 @@ Project Link: [https://github.com/eanticev/niagara-destruction-driver](https://g
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* (will add here when I get consent)
+* James Sharpe - [`x.com/_JamesSharpe_`](https://x.com/_jamessharpe_) - [github.com/UnconsciousObserver](https://github.com/UnconsciousObserver) - As the VFX Lead at Counterplay Games in 2023, James architected and implemented the original iteration of this approach.
+* [Milan Malata](https://www.linkedin.com/in/milan-malata-907409102/) - [github.com/mimalata](https://github.com/mimalata). As the Principal Technical Artist at Counterplay Games in 2023, Milan built the Houdini fracture and VAT texture generation workflows for the original HDA based iteration of this approach.
+* [Alan Lee](https://www.linkedin.com/in/alanlee/) - As the technical art director at Counterplay Games, Alan put this system into production.
+* Joshua Carlos - As a Senior Technical Artist at Counterplay Games in 2023, Joshua handled building python workflows to execute the HDAs on 1000s of props. The CHAOS mesh uasset generator is inspired by his work.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
