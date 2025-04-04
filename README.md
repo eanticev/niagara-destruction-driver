@@ -273,7 +273,7 @@ Project Link: [https://github.com/eanticev/niagara-destruction-driver](https://g
 [license-url]: https://github.com/eanticev/niagara-destruction-driver/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/emilanticevic/
-[product-screenshot]: Resources/demo.webp
+[product-screenshot]: Resources/demo-with-buffers.webp
 [step-1]: Resources/convert-geometry-collection-to-ndd.webp
 [step-2]: Resources/drop-blueprint-into-level.webp
 [step-3]: Resources/use-ndd-debugger.webp
