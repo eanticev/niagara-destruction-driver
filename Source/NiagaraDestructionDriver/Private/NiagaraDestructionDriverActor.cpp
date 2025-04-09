@@ -201,6 +201,8 @@ void ANiagaraDestructionDriverActor::BeginPlay()
 		NiagaraComponent->SetVariableTexture("InitialBonePositionsTexture", NiagaraDestructionDriverParams->InitialBoneLocationsTexture);
 		NiagaraComponent->SetVariableTextureRenderTarget("SimulatedParticlePositionsOut", PositionsTexture);
 		NiagaraComponent->SetVariableTextureRenderTarget("SimulatedParticleRotationsOut", RotationsTexture);
+		// moves the particle system to be centered against the destructible mesh and so that all the local space ([-1,1] space) particles are correctly aligned.
+		NiagaraComponent->SetRelativeLocation(-NiagaraDestructionDriverParams->PivotOffset);
 		// NiagaraComponent->ResetSystem();
 	}
 }

@@ -72,9 +72,9 @@ public:
 	void InitiateDestructionForce(FVector ForceOrigin, float ForceRadius, float ForceDuration = 0.1f);
 	
 	// <components>
-	UPROPERTY() TObjectPtr<USceneComponent> SourceGeometryContainer; // will contain original static meshes used in the geometry collection that was processed into this actor
-	UPROPERTY() TObjectPtr<UStaticMeshComponent> MeshComponent;
-	UPROPERTY() TObjectPtr<UNiagaraComponent> NiagaraComponent;
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly) TObjectPtr<USceneComponent> SourceGeometryContainer; // will contain original static meshes used in the geometry collection that was processed into this actor
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly) TObjectPtr<UStaticMeshComponent> MeshComponent;
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly) TObjectPtr<UNiagaraComponent> NiagaraComponent;
 	// </components>
 
 	// <overrides>

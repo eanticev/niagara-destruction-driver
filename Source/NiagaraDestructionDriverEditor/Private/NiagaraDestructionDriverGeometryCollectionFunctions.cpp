@@ -662,6 +662,7 @@ UNiagaraDestructionDriverDataAsset* UNiagaraDestructionDriverGeometryCollectionF
 	DataAsset->InitialBoneLocationsTexture = InitialBoneLocationsTexture;
 	DataAsset->CustomUVChannelIndex = 1;
 	DataAsset->RenderTargetTextureSize = RenderTargetTextureSize;
+	DataAsset->PivotOffset = -GeometryCollectionIn->GetGeometryCollection()->GetBoundingBox().Origin;
 	// Save the DataAsset in the editor
 	QuickSaveAssetRelativeTo(DataAsset, GeometryCollectionIn, DataAsset->GetName(), TEXT(""));
 	
@@ -763,6 +764,7 @@ UTexture2D* CreateRuntimeTexture(int32 Width, int32 Height)
 }
 */
 
+PRAGMA_DISABLE_OPTIMIZATION
 TArray<FVector3f> UNiagaraDestructionDriverGeometryCollectionFunctions::GenerateGeometryCollectionFragmentCentroids(const FGeometryCollection* GeometryCollection)
 {
 	// Since the underlying geometry collection does not actually provide an accurate initial location of a bone
@@ -851,24 +853,43 @@ TArray<FVector3f> UNiagaraDestructionDriverGeometryCollectionFunctions::Generate
 		FMath::IsNearlyZero(BoundsSize.Y) ? 1.0f : BoundsSize.Y,
 		FMath::IsNearlyZero(BoundsSize.Z) ? 1.0f : BoundsSize.Z
 	);
-	ParallelFor(GeometryCentroids.Num(), [&](int32 Index)
+
+	const FVector PivotOffset = -DestructibleBounds.Origin; // if center = FVector::ZeroVector;
+
+	// offset all the centroids by the pivot so we can normalize them
+	for (int32 Index = 0; Index < GeometryCentroids.Num(); Index++)
+	{
+		const auto Pivot3f =  FVector3f(PivotOffset);
+		GeometryCentroids[Index] = GeometryCentroids[Index] + Pivot3f;
+	};
+
+	UE_LOG(LogNiagaraDestructionDriverEditor, Verbose, TEXT("GenerateGeometryCollectionFragmentCentroids: PivotOffset(X=%f, Y=%f, Z=%f)"),
+			DestructibleBounds.Origin.X,
+			DestructibleBounds.Origin.Y,
+			DestructibleBounds.Origin.Z
+			);
+	
+	for (int32 Index = 0; Index < GeometryCentroids.Num(); Index++)
+	//ParallelFor(GeometryCentroids.Num(), [&](int32 Index)
 	{
 		// Convert FVector3f to FVector for calculations
 		FVector Position(GeometryCentroids[Index].X, GeometryCentroids[Index].Y, GeometryCentroids[Index].Z);
 
 		// Normalize to 0-1 range
-		const FVector NormalizedPosZeroToOne = (Position - BoundsMin) / SafeBoundsSize;
-		const FVector NormalizedPosWithNegatives = Position / Extents;
+		//// const FVector NormalizedPosZeroToOne = (Position - BoundsMin) / SafeBoundsSize;
+		const FVector NormalizedPosWithNegatives = (Position) / Extents;
 
 		const auto NormalizedPos = NormalizedPosWithNegatives;
 
 		// Convert back to FVector3f and update the array
 		GeometryCentroids[Index] = FVector3f(NormalizedPos.X, NormalizedPos.Y, NormalizedPos.Z);
-	});
+	}
+	//);
 	// </normalize>
 
 	return GeometryCentroids;
 }
+PRAGMA_ENABLE_OPTIMIZATION
 
 UTexture2D* UNiagaraDestructionDriverGeometryCollectionFunctions::CreateInitialBoneLocationsToTexture(UGeometryCollection* GeometryCollectionIn)
 {
