@@ -48,10 +48,8 @@ public class NiagaraDestructionDriver : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
-				"EditorScriptingUtilities", 
 				"MeshConversion", 
-				"Eigen", 
-				"UnrealEd",
+				"Eigen"
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
