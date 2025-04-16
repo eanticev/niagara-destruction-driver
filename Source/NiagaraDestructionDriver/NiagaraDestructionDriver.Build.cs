@@ -27,11 +27,7 @@ public class NiagaraDestructionDriver : ModuleRules
 			new string[]
 			{
 				"Core", 
-				"MeshDescription", 
-				"StaticMeshDescription",
 				"GeometryCollectionEngine",
-				"GeometryCore", 
-				"DynamicMesh",
 				"Niagara",
 				"Chaos",
 				"PhysicsCore",
@@ -48,8 +44,6 @@ public class NiagaraDestructionDriver : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
-				"MeshConversion", 
-				"Eigen"
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
