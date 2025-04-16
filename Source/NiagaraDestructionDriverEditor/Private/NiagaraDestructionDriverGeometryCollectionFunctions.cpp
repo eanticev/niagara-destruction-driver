@@ -764,7 +764,7 @@ UTexture2D* CreateRuntimeTexture(int32 Width, int32 Height)
 }
 */
 
-PRAGMA_DISABLE_OPTIMIZATION
+// UE_DISABLE_OPTIMIZATION
 TArray<FVector3f> UNiagaraDestructionDriverGeometryCollectionFunctions::GenerateGeometryCollectionFragmentCentroids(const FGeometryCollection* GeometryCollection)
 {
 	// Since the underlying geometry collection does not actually provide an accurate initial location of a bone
@@ -889,7 +889,7 @@ TArray<FVector3f> UNiagaraDestructionDriverGeometryCollectionFunctions::Generate
 
 	return GeometryCentroids;
 }
-PRAGMA_ENABLE_OPTIMIZATION
+// UE_ENABLE_OPTIMIZATION
 
 UTexture2D* UNiagaraDestructionDriverGeometryCollectionFunctions::CreateInitialBoneLocationsToTexture(UGeometryCollection* GeometryCollectionIn)
 {
