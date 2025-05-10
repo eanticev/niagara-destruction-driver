@@ -207,6 +207,7 @@ void ANiagaraDestructionDriverActor::BeginPlay()
 	}
 }
 
+#if WITH_EDITOR
 void ANiagaraDestructionDriverActor::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent)
 {
 	Super::PostEditChangeProperty(PropertyChangedEvent);
@@ -231,3 +232,4 @@ void ANiagaraDestructionDriverActor::PostEditChangeProperty(FPropertyChangedEven
 		*/
 	}
 }
+#endif
