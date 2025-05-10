@@ -80,7 +80,9 @@ public:
 	// <overrides>
 	virtual void PostInitProperties() override;
 	virtual void PostInitializeComponents() override;
+#if WITH_EDITOR
 	virtual void PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent) override;
+#endif
 	// </overrides>
 
 protected:
