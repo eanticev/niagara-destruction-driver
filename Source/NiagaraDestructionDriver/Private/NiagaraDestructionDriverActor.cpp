@@ -165,6 +165,7 @@ void ANiagaraDestructionDriverActor::BeginPlay()
 		// Use quaternion for material parameter - best for smooth interpolation
 		const FQuat QuatRotation = GetActorRotation().Quaternion();
 		const FVector4 QuatVector = FVector4(QuatRotation.X, QuatRotation.Y, QuatRotation.Z, QuatRotation.W);
+		const FVector Extents = MeshComponent->GetStaticMesh()->GetBoundingBox().GetExtent();
 		
 		// Create the dynamic material instance for our mesh and set the relevant parameters
 		uint32 Idx = 0;
@@ -179,7 +180,7 @@ void ANiagaraDestructionDriverActor::BeginPlay()
 			DynamicMaterial->SetTextureParameterValue(FName("RT_Rotation"), RotationsTexture);
 			DynamicMaterial->SetTextureParameterValue(FName("InitialBoneLocations"), NiagaraDestructionDriverParams->InitialBoneLocationsTexture);
 			DynamicMaterial->SetVectorParameterValue(FName("ActorRotationQuat"), QuatVector);
-			DynamicMaterial->SetVectorParameterValue(FName("MeshHalfExtents"), this->MeshComponent->GetStaticMesh()->GetBoundingBox().GetExtent());
+			DynamicMaterial->SetVectorParameterValue(FName("MeshHalfExtents"), Extents);
 			MeshMaterialsWithParamsSet.Add(DynamicMaterial);
 			MeshComponent->SetMaterial(Idx, DynamicMaterial);
 			Idx++;
