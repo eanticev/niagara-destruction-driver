@@ -162,7 +162,11 @@ void ANiagaraDestructionDriverActor::BeginPlay()
 	}
 	else
 	{
-
+		// Use quaternion for material parameter - best for smooth interpolation
+		const FQuat QuatRotation = GetActorRotation().Quaternion();
+		const FVector4 QuatVector = FVector4(QuatRotation.X, QuatRotation.Y, QuatRotation.Z, QuatRotation.W);
+		const FVector Extents = MeshComponent->GetStaticMesh()->GetBoundingBox().GetExtent();
+		
 		// Create the dynamic material instance for our mesh and set the relevant parameters
 		uint32 Idx = 0;
 		MeshMaterialsWithParamsSet.Empty();
@@ -175,11 +179,13 @@ void ANiagaraDestructionDriverActor::BeginPlay()
 			DynamicMaterial->SetTextureParameterValue(FName("RT_Position"), PositionsTexture);
 			DynamicMaterial->SetTextureParameterValue(FName("RT_Rotation"), RotationsTexture);
 			DynamicMaterial->SetTextureParameterValue(FName("InitialBoneLocations"), NiagaraDestructionDriverParams->InitialBoneLocationsTexture);
+			DynamicMaterial->SetVectorParameterValue(FName("ActorRotationQuat"), QuatVector);
+			DynamicMaterial->SetVectorParameterValue(FName("MeshHalfExtents"), Extents);
 			MeshMaterialsWithParamsSet.Add(DynamicMaterial);
 			MeshComponent->SetMaterial(Idx, DynamicMaterial);
 			Idx++;
 		}
-		
+
 		// uint32 Index = 0;
 		// for (const auto DynamicMaterial : MeshMaterialsWithParamsSet)
 		// {
@@ -201,6 +207,8 @@ void ANiagaraDestructionDriverActor::BeginPlay()
 		NiagaraComponent->SetVariableTexture("InitialBonePositionsTexture", NiagaraDestructionDriverParams->InitialBoneLocationsTexture);
 		NiagaraComponent->SetVariableTextureRenderTarget("SimulatedParticlePositionsOut", PositionsTexture);
 		NiagaraComponent->SetVariableTextureRenderTarget("SimulatedParticleRotationsOut", RotationsTexture);
+		NiagaraComponent->SetVariableVec3(FName("DestructibleMeshLocalHalfExtents"), this->MeshComponent->GetStaticMesh()->GetBoundingBox().GetExtent());
+
 		// moves the particle system to be centered against the destructible mesh and so that all the local space ([-1,1] space) particles are correctly aligned.
 		NiagaraComponent->SetRelativeLocation(-NiagaraDestructionDriverParams->PivotOffset);
 		// NiagaraComponent->ResetSystem();
