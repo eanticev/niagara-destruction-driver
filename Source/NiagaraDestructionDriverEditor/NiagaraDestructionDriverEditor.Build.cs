@@ -58,6 +58,7 @@ public class NiagaraDestructionDriverEditor : ModuleRules
 				"Eigen", 
 				"UnrealEd", 
 				"FractureEditor", 
+				"ToolMenus"
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
